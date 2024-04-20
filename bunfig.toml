@@ -1,0 +1,9 @@
+jsx = "solid"
+jsxImportSource = "solid-js"
+
+[loader]
+".tsx" = "tsx"
+".ts" = "ts"
+
+[install]
+auto = true
