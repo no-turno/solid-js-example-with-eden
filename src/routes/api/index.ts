@@ -1,7 +1,9 @@
 import type { APIEvent } from "@solidjs/start/server";
-import { client } from "~/server/main";
+import { handler } from "~/lib/api";
 
-export const GET = (event: APIEvent) => client().api.index.get({
+const router = handler()
+
+export const GET = (event: APIEvent) => router.index.get({
   fetch: event.request,
   query: event.params
 })
