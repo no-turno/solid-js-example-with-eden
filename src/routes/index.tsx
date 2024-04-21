@@ -1,14 +1,19 @@
 import { Title } from "@solidjs/meta";
 import { createAsync } from "@solidjs/router";
-import { client } from "~/server/main";
+import { handler } from "~/lib/api";
+
+const loadData = async () => {
+  "use server";
+  return await handler().index.get();
+};
 
 export default function Home() {
-  const readme = createAsync(() => client().api.index.get());
+  const data = createAsync(() => loadData());
   return (
     <main>
       <Title>Hello World</Title>
       <pre>
-        <code>{readme()?.data}</code>
+        <code>{data()?.data}</code>
       </pre>
     </main>
   );
